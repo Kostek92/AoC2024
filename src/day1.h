@@ -6,7 +6,7 @@
 class Day1
 {
 public:
-	Day1();
+	Day1() = default;
 	long long solve1() const;
 	long long solve2() const;
 

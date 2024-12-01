@@ -4,9 +4,6 @@
 #include <fstream>
 #include <iostream>
 
-Day1::Day1() {}
-
-
 long long Day1::solve1() const
 {
 	long long result = 0;
