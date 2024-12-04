@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(AoC main.cpp
 	src/day1.h src/day1.cpp
+	src/day2.h src/day2.cpp
+	src/day3.h src/day3.cpp
 	src/config.h)
 
 include(GNUInstallDirs)
