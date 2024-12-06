@@ -105,6 +105,31 @@ int Day4::solve1() const
 	return result;
 }
 
+int Day4::solve2() const
+{
+	int result = 0;
+	const auto matrix = readInput();
+	const int n = matrix.size();
+	for(int rowIndex = 1; rowIndex < n - 1; ++rowIndex)
+	{
+		for(int colIndex = 1; colIndex < n -1; ++colIndex)
+		{
+			if(matrix[rowIndex][colIndex] == 'A')
+			{
+				if(((matrix[rowIndex-1][colIndex-1] == 'M' && matrix[rowIndex+1][colIndex+1] == 'S')	//Backslash forward
+				|| (matrix[rowIndex-1][colIndex-1] == 'S' && matrix[rowIndex+1][colIndex+1] == 'M'))	//Backslash backward
+				&& ((matrix[rowIndex-1][colIndex+1] == 'M' && matrix[rowIndex+1][colIndex-1] == 'S')	//Slash forward
+				|| (matrix[rowIndex-1][colIndex+1] == 'S' && matrix[rowIndex+1][colIndex-1] == 'M'))	//Slash backward
+				)
+				{
+					result++;
+				}
+			}
+		}
+	}
+	return result;
+}
+
 std::vector<std::vector<char>> Day4::readInput() const
 {
 	const std::string fileName = std::string(config::INPUT_DIR_PATH) + "\\Day4.txt";

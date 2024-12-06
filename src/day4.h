@@ -7,7 +7,7 @@ class Day4
 public:
 	Day4() = default;
 	int solve1() const;
-
+	int solve2() const;
 private:
 	std::vector<std::vector<char>> readInput() const;
 
