@@ -52,6 +52,48 @@ int Day5::solve1() const
 	return result;
 }
 
+int Day5::solve2() const
+{
+	auto input = readInput();
+	const auto& rules = input.rules;
+	auto& instructions = input.instructions;
+
+	std::unordered_map<int, std::vector<int>> rules_map;
+	for(const auto& rule : rules)
+	{
+		rules_map[rule.first].push_back(rule.second);
+	}
+
+	int result = 0;
+	for(auto& instruction : instructions)
+	{
+		bool instructionValid = true;
+		for (int i = 1; i < instruction.size(); ++i)
+		{
+			const std::vector<int>& rulesPerPage = rules_map[instruction[i]];
+			if(!rulesPerPage.empty())
+			{
+				int iValueToSwapIndex = i;
+				for(int j = i; j >=0; --j)
+				{
+					if(std::find(rulesPerPage.begin(), rulesPerPage.end(), instruction[j]) != rulesPerPage.end())
+					{
+						instructionValid = false;
+						std::iter_swap(instruction.begin() + iValueToSwapIndex, instruction.begin() +j);
+						iValueToSwapIndex = j;
+					}
+				}
+			}
+		}
+		if(!instructionValid)
+		{
+			int middleIndex = instruction.size()/2;
+			result+= instruction[middleIndex];
+		}
+	}
+	return result;
+}
+
 Day5::Input Day5::readInput() const
 {
 	Input result;
@@ -76,16 +118,16 @@ Day5::Input Day5::readInput() const
 	}
 
 	while (std::getline(file, line) && !line.empty()) {
-			std::istringstream ss(line);
-			std::vector<int> instruction;
-			int number;
-			char delimiter;
+		std::istringstream ss(line);
+		std::vector<int> instruction;
+		int number;
+		char delimiter;
 
-			while (ss >> number) {
-				instruction.push_back(number);
-				ss >> delimiter; // Skip the comma
-			}
-			result.instructions.push_back(instruction);
+		while (ss >> number) {
+			instruction.push_back(number);
+			ss >> delimiter; // Skip the comma
+		}
+		result.instructions.push_back(instruction);
 	}
 	return result;
 }

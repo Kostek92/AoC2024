@@ -26,7 +26,7 @@ int main()
 	// std::cout << "Day 4 solution 2 = " << day4Solver.solve2() << std::endl;
 
 	Day5 day5Solver;
-	std::cout << "Day 5 solution 1 = " << day5Solver.solve1() << std::endl;
-	//std::cout << "Day 4 solution 2 = " << day4Solver.solve2() << std::endl;
+	//std::cout << "Day 5 solution 1 = " << day5Solver.solve1() << std::endl;
+	std::cout << "Day 5 solution 2 = " << day5Solver.solve2() << std::endl;
 	return 0;
 }

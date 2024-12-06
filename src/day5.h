@@ -7,6 +7,7 @@ class Day5
 public:
 	Day5() = default;
 	int solve1() const;
+	int solve2() const;
 
 private:
 	struct Input
