@@ -6,14 +6,15 @@
 class Day6
 {
 public:
+	using labMap = std::vector<std::vector<char>>;
+	using coordinates = std::pair<int, int>;
+
 	Day6() = default;
 
 	int solve1();
+	int solve2();
 
 private:
-	using labMap = std::vector<std::vector<char>>;
-	labMap readInput() const;
-	std::pair<int, int> findGuard(const labMap& map) const;
 	enum Direction
 	{
 		RIGHT,
@@ -21,12 +22,29 @@ private:
 		LEFT,
 		UP
 	};
+	struct HitObstacle
+	{
+		coordinates coordinates;
+		Direction dir;
+	};
+
+
+	labMap readInput() const;
+	coordinates findGuard(const labMap& map) const;
 	Direction getNextDirection(Direction currentDirection) const;
-	static constexpr char m_wallSymbol = '#';
+
+	bool willHitObstacle(const std::vector<HitObstacle>& obstacles
+	, const coordinates& currentCoordinates
+	, Direction currentDirection) const;
+
+	static constexpr char m_obstacleSymbol = '#';
 	static constexpr char m_seenSymbol = 'X';
 	static constexpr char m_notSeenSymbol = '.';
 
-	const std::vector<std::pair<int, int>> m_dir =
+	mutable std::vector<coordinates> extras = {};
+
+
+	const std::vector<coordinates> m_moves =
 	{{0,1}		//right
 	,{1,0}		//down
 	,{0,-1}		//left
