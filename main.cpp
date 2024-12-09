@@ -6,6 +6,7 @@
 #include "src/day5.h"
 #include "src/day6.h"
 #include "src/day7.h"
+#include "src/day8.h"
 
 using namespace std;
 
@@ -35,8 +36,11 @@ int main()
 	//std::cout << "Day 6 solution 1 = " << day6Solver.solve1() << std::endl;
 	//std::cout << "Day 6 solution 2 = " << day6Solver.solve2() << std::endl;
 
-	Day7 day7Solver;
+	//Day7 day7Solver;
 	//std::cout << "Day 7 solution 1 = " << day7Solver.solve1() << std::endl;
-	std::cout << "Day 7 solution 2 = " << day7Solver.solve2() << std::endl;
+	//std::cout << "Day 7 solution 2 = " << day7Solver.solve2() << std::endl;
+
+	Day8 day8Solver;
+	std::cout << "Day 7 solution 1 = " << day8Solver.solve1() << std::endl;
 	return 0;
 }
