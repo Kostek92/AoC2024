@@ -9,6 +9,7 @@ public:
 	Day8() = default;
 
 	int solve1();
+	int solve2();
 
 private:
 	using antenasMap = std::vector<std::vector<char>>;

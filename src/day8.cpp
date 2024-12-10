@@ -53,6 +53,34 @@ int Day8::solve1() {
 	return allAntinodes.size();
 }
 
+int Day8::solve2() {
+	auto labMap = readInput();
+	const int n = labMap.size();
+
+	std::unordered_set<coordinates, pair_hash> allAntinodes{};
+	const auto allAntenasByType = parseAntenas(labMap);
+
+	for(const auto& antenasOfType : allAntenasByType)
+	{
+		const auto antenas = antenasOfType.second;
+		for (int i = 0; i < antenas.size(); ++i) {
+			for (int j = i+1; j < antenas.size(); ++j) {
+				const auto antinodes = createAntinodes(antenas[i], antenas[j]);
+				if(isAntinodeOnMap(antinodes.first, labMap))
+				{
+					allAntinodes.insert(antinodes.first);
+				}
+				if(isAntinodeOnMap(antinodes.second, labMap))
+				{
+					allAntinodes.insert(antinodes.second);
+				}
+			}
+		}
+	}
+
+	return allAntinodes.size();
+}
+
 Day8::antenasMap Day8::readInput() const
 {
 	const std::string fileName = std::string(config::INPUT_DIR_PATH) + "\\Day8.txt";
