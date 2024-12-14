@@ -14,6 +14,7 @@ add_executable(AoC main.cpp
 	src/day6.h src/day6.cpp
 	src/day7.h src/day7.cpp
 	src/day8.h src/day8.cpp
+	src/day9.h src/day9.cpp
 	src/config.h)
 
 include(GNUInstallDirs)
