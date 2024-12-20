@@ -7,6 +7,7 @@ class Day9
 public:
 	Day9() = default;
 	long long solve1();
+	long long solve2();
 
 private:
 	std::string getInput() const;
